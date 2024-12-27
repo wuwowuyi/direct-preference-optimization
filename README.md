@@ -64,7 +64,7 @@ $\displaystyle objective(\phi) = E_{(x,y) \sim D_{\pi_\phi}}[r_\theta(x, y) -\be
 
 where $\gamma$ is the pretraining loss coefficient.
 
-Question, I don't see in the paper on how the pretrained loss term is combined with the first loss term. ~~Maybe back extends the start of RL trajectory to the generation of first token in $x$?~~ Or simply add the $\log\pi_\phi(x)$ of the entire $x$ onto the loss?
+Question, I don't see in the paper on how the pretrained loss term is combined with the first loss term. Maybe back extends the start of RL trajectory to the generation of first token in $x$, like $\log\pi_\phi(x)$ is a per step loss for every token of $x$? Or simply add the $\log\pi_\phi(x)$ of the entire $x$ onto the loss?
 
 ## Direct Preference Optimization
 
