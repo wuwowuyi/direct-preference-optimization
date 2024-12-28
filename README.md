@@ -88,3 +88,9 @@ Replace $r_\theta(x, y)$ in the reward loss objective (A) above, we have a funct
 $L_{DPO}(\pi_\phi; \pi_{ref}) = -E_{(x, y_w, y_l) \sim D}[\log(\sigma(\beta\log\frac{\pi_\phi(y_w|x)}{\pi_{ref}(y_w|x)} - \beta\log\frac{\pi_\phi(y_l|x)}{\pi_{ref}(y_l|x)}))]$
 
 As a result, by doing gradient descent wrt. $\phi$ on $L_{DPO}(\pi_\phi; \pi_{ref})$, we can optimize $\pi_\phi$ without training a reward model.
+
+The log probs are computed in the same way as PPO. For example, we concatenate $(x, y_w)$ and run it through the policy model to get $\log\pi_\phi(y_w|x)$. 
+
+And that's it. NO RL training any more.
+
+The PPO training requires to run 4 models, reward, policy, policy reference, and state value function model. DPO needs only 2, policy and policy reference. As each of the model is a gigantic transformer, DPO is much more resource efficient.
